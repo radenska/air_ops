@@ -53,6 +53,11 @@
         margin: 2px 0;
         width: 150px;
       }
+      .floating input[type=text] {
+        padding: 3px;
+        margin: 2px 0;
+        width: 45px;
+      }
       option {
         padding: 3px;
         margin: 2px 0;
@@ -78,10 +83,13 @@
         width: 80px;
         height: 35px;
       }
-      .num-field input[type=text] {
+      input:invalid {
+        border: 2px solid red;
+      }
+      input[type=number] {
         padding: 3px;
         margin: 2px 0;
-        width: 30px;
+        width: 45px;
       }
       .width {
         width: 150px;
@@ -99,9 +107,9 @@
           <input class="column-2" type="text" id="name" name="entry.1766937836" required>
         </div>
         <div class="row">
-          <label class="column-1" for="personnel-number">Personnel number</label>
+          <label class="column-1" for="personnel-number">Personnel number <span style="color:red;">*</span></label>
           <select class="column-2 width" id="personnel-number" name="entry.1979791766" required>
-            <option value="blank"></option>
+            <option value="N/A">N/A</option>
             <option value="EM6007 (Wikstrom)">EM6007 (Wikstrom)</option>
             <option value="EM2087 (Moutray)">EM2087 (Moutray)</option>
             <option value="EM9136 (Fay)">EM9136 (Fay)</option>
@@ -109,7 +117,6 @@
             <option value="EM3040 (Wilkins)">EM3040 (Wilkins)</option>
             <option value="EM0106 (Morton)">EM0106 (Morton)</option>
             <option value="SO3276 (McGowan)">SO3276 (McGowan)</option>
-            <option value="N/A">N/A</option>
           </select>
         </div>
         <div class="row">
@@ -123,6 +130,9 @@
         <div class="row">
           <label class="column-1" for="incident">Incident #</label>
           <input class="column-2" type="text" id="incident" name="entry.1445752921">
+        </div>
+        <div class="row">
+          Select at least one of the below. <span style="color:red;">*</span>
         </div>
         <div class="row">
           <input type="checkbox" id="cc" name="entry.80614275" value="CC">
@@ -214,9 +224,9 @@
           <label for="short-haul-live-load-no">No</label>
         </div>
       </div>
-      <div class="row num-field">
+      <div class="row">
         <label class="column-1-indented"for="live-load-number">Number</label>
-        <input class="column-2" type="text" id="live-load-number" name="entry.1021694965" value="0">
+        <input class="column-2" type="number" id="live-load-number" name="entry.1021694965" value="0" min="0" max="25">
       </div>
       <div class="row">
         <div class="column-1-indented">Sling Load</div>
@@ -227,9 +237,9 @@
           <label for="short-haul-sling-load-no">No</label>
         </div>
       </div>
-      <div class="row num-field">
+      <div class="row">
         <label class="column-1-indented" for="sling-load-number">Number</label>
-        <input class="column-2" type="text" id="sling-load-number" name="entry.467476010" value="0">
+        <input class="column-2" type="number" id="sling-load-number" name="entry.467476010" value="0" min="0" max="25">
       </div>
       <div class="row">
         <div class="column-1">ID Cargo Lower</div>
@@ -240,9 +250,9 @@
           <label for="id-cargo-lower-no">No</label>
         </div>
       </div>
-      <div class="row num-field">
+      <div class="row">
         <label class="column-1-indented" for="id-cargo-lower-number">Number</label>
-        <input class="column-2" type="text" id="id-cargo-lower-number" name="entry.408351342" value="0">
+        <input class="column-2" type="number" id="id-cargo-lower-number" name="entry.408351342" value="0" min="0" max="25">
       </div>
       <div class="row">
         <div class="column-1">Water Bucket Rigging</div>
@@ -253,13 +263,13 @@
           <label for="water-bucket-rigging-no">No</label>
         </div>
       </div>
-      <div class="row num-field">
+      <div class="row">
         <label class="column-1-indented" for="water-bucket-number">Number</label>
-        <input class="column-2" type="text" id="water-bucket-number" name="entry.2070101754" value="0"
+        <input class="column-2" type="number" id="water-bucket-number" name="entry.2070101754" value="0" min="0" max="25">
       </div>
-      <div class="row num-field">
+      <div class="row">
         <label class="column-1-indented" for="water-bucket-drops">Drops #</label>
-        <input class="column-2" type="text" id="water-bucket-drops" name="entry.777098415" value="0">
+        <input class="column-2" type="number" id="water-bucket-drops" name="entry.777098415" value="0" min="0" max="25">
       </div>
       <div class="row">
         <div class="column-1">Confined space landings</div>
@@ -306,9 +316,9 @@
           <label for="low-hover-no">No</label>
         </div>
       </div>
-      <div class="row num-field">
+      <div class="row">
         <label class="column-1-indented" for="low-hover-number">Number</label>
-        <input class="column-2" type="text" id="low-hover-number" name="entry.1696138054" value="0">
+        <input class="column-2" type="number" id="low-hover-number" name="entry.1696138054" value="0" min="0" max="25">
       </div>
       <div class="row">
         <div class="column-1">Snow OPS</div>
@@ -328,9 +338,9 @@
           <label for="nvg-no">No</label>
         </div>
       </div>
-      <div class="row num-field">
+      <div class="row floating">
         <label class="column-1-indented" for="nvg-time">Time</label>
-        <input class="column-2" type="text" id="nvg-time" name="entry.589110924" value="0">
+        <input class="column-2" type="text" id="nvg-time" name="entry.589110924" pattern="\d*\.?\d*" value="0">
       </div>
       <div class="row">
         <div class="column-1">Litter tie down</div>
@@ -350,21 +360,21 @@
           <label for="helicopter-hoist-ops-no">No</label>
         </div>
       </div>
-      <div class="row num-field">
+      <div class="row">
         <label class="column-1-indented" for="helicopter-hoist-ops-lll">Live load lower #</label>
-        <input class="column-2" type="text" id="helicopter-hoist-ops-lll" name="entry.1224626350" value="0">
+        <input class="column-2" type="number" id="helicopter-hoist-ops-lll" name="entry.1224626350" value="0" min="0" max="25">
       </div>
-      <div class="row num-field">
+      <div class="row">
         <label class="column-1-indented" for="helicopter-hoist-ops-llr">Live load raise #</label>
-        <input class="column-2" type="text" id="helicopter-hoist-ops-llr" name="entry.571050783" value="0">
+        <input class="column-2" type="number" id="helicopter-hoist-ops-llr" name="entry.571050783" value="0" min="0" max="25">
       </div>
-      <div class="row num-field">
+      <div class="row">
         <label class="column-1-indented" for="helicopter-hoist-ops-cl">Cargo lower #</label>
-        <input class="column-2" type="text" id="helicopter-hoist-ops-cl" name="entry.1647535661" value="0">
+        <input class="column-2" type="number" id="helicopter-hoist-ops-cl" name="entry.1647535661" value="0" min="0" max="25">
       </div>
-      <div class="row num-field">
+      <div class="row">
         <label class="column-1-indented" for="helicopter-hoist-ops-cr">Cargo raise #</label>
-        <input class="column-2" type="text" id="helicopter-hoist-ops-cr" name="entry.1034154823" value="0">
+        <input class="column-2" type="number" id="helicopter-hoist-ops-cr" name="entry.1034154823" value="0" min="0" max="25">
       </div>
       <div class="row">
         <div class="column-1">Tower Hoist OPS</div>
@@ -375,21 +385,21 @@
           <label for="tower-hoist-ops-no">No</label>
         </div>
       </div>
-      <div class="row num-field">
+      <div class="row">
         <label class="column-1-indented" for="tower-hoist-ops-lll">Live load lower #</label>
-        <input class="column-2" type="text" id="tower-hoist-ops-lll" name="entry.1059681448"  value="0">
+        <input class="column-2" type="number" id="tower-hoist-ops-lll" name="entry.1059681448"  value="0" min="0" max="25">
       </div>
-      <div class="row num-field">
+      <div class="row">
         <label class="column-1-indented" for="tower-hoist-ops-llr">Live load raise #</label>
-        <input class="column-2" type="text" id="tower-hoist-ops-llr" name="entry.360654942" value="0">
+        <input class="column-2" type="number" id="tower-hoist-ops-llr" name="entry.360654942" value="0" min="0" max="25">
       </div>
-      <div class="row num-field">
+      <div class="row">
         <label class="column-1-indented" for="tower-hoist-ops-cl">Cargo lower #</label>
-        <input class="column-2" type="text" id="tower-hoist-ops-cl" name="entry.1165620508" value="0">
+        <input class="column-2" type="number" id="tower-hoist-ops-cl" name="entry.1165620508" value="0" min="0" max="25">
       </div>
-      <div class="row num-field">
+      <div class="row">
         <label class="column-1-indented" for="tower-hoist-ops-cr">Cargo raise #</label>
-        <input class="column-2" type="text" id="tower-hoist-ops-cr" name="entry.2139924757" value="0">
+        <input class="column-2" type="number" id="tower-hoist-ops-cr" name="entry.2139924757" value="0" min="0" max="25">
       </div>
       <div class="row">
         <label class="column-1" for="issues">Operational issues or problems.</label>
