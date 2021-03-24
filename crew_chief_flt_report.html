@@ -9,17 +9,16 @@
         padding-bottom: 10px;
       }
       .title {
-        margin-left: 15px;
         margin-top: 15px;
         font-size: 1.5em;
       }
       .sub-title {
-        margin-left: 15px;
         margin-bottom: 10px;
         font-size: 1.3em;
       }
       .header {
         color: FFFFF0;
+        margin-left: 15px;
       }
       .column-1 {
         float: left;
@@ -100,6 +99,7 @@
     <div class="header">
       <div class="title">SNOHOMISH COUNTY SHERIFF'S OFFICE</div>
       <div class="sub-title">Crew Chief/Observer Flight Report</div>
+      <div><span style="color:red;">*</span> = required field</div>
     </div>
     <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSd4W1nRgLK8sa9lRCI1qizHs2vmcuVVbqBAhHorGrl3TJDhdQ/formResponse">
       <div class="row">
@@ -120,8 +120,8 @@
         </select>
       </div>
       <div class="row">
-        <label class="column-1" for="email">Email <span style="color:red;">*</span></label>
-        <input class="column-2" type="email" id="email" name="entry.632821268" onkeydown="return event.key != 'Enter';" required>
+        <label class="column-1" for="email">Email (if you want a copy)</label>
+        <input class="column-2" type="email" id="email" name="entry.632821268" onkeydown="return event.key != 'Enter';">
       </div>
       <div class="row">
         <label class="column-1" for="date">Date <span style="color:red;">*</span></label>
