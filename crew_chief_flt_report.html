@@ -1,12 +1,18 @@
 <html>
   <head>
     <style>
-      body {background-color: #6B8E23; font-family: arial;}
+      body {
+        background-color: #6B8E23;
+        font-family: arial;
+      }
       form {
         background-color: white;
         padding-left: 10px;
         padding-top: 10px;
         padding-bottom: 10px;
+      }
+      .bold {
+        font-weight: 700;
       }
       .title {
         margin-top: 15px;
@@ -19,6 +25,16 @@
       .header {
         color: FFFFF0;
         margin-left: 15px;
+      }
+      .instructions-block {
+        margin-left: 6px;
+        width: 700px;
+        font-size: 0.8em;
+      }
+      .instructions {
+        font-size: 0.8em;
+        font-style: italic
+        color: #00008B;
       }
       .column-1 {
         float: left;
@@ -35,6 +51,18 @@
         float: left;
         width: 300px;
         padding: 3px;
+      }
+      .column-2-radio {
+        float: left;
+        width: 120px;
+        padding: 3px;
+      }
+      .column-3 {
+        float: left;
+        width: 500px;
+        padding: 3px;
+        margin-left: 10px;
+        font-size: 0.8em;
       }
       .row {
         padding: 3px;
@@ -98,34 +126,39 @@
   <body>
     <div class="header">
       <div class="title">SNOHOMISH COUNTY SHERIFF'S OFFICE</div>
-      <div class="sub-title">Crew Chief/Observer Flight Report</div>
+      <div class="sub-title">Pilot/Crew Chief/Observer Flight Report</div>
       <div><span style="color:red;">*</span> = required field</div>
     </div>
     <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSd4W1nRgLK8sa9lRCI1qizHs2vmcuVVbqBAhHorGrl3TJDhdQ/formResponse">
+      <div class="instructions-block instructions">
+        <div class="bold">INSTRUCTIONS/INFO</div>
+        <div>• Other than the "Name" field, use last names only. Include first initial in case of common last names (e.g., J. Brown, R. Brown).</div>
+      </div>
       <div class="row">
         <label class="column-1" for="name">Name <span style="color:red;">*</span></label>
         <input class="column-2" type="text" id="name" name="entry.1766937836" onkeydown="return event.key != 'Enter';" required>
+        <div class="column-3 instructions">first and last</div>
       </div>
       <div class="row">
         <label class="column-1" for="personnel-number">Personnel number <span style="color:red;">*</span></label>
         <select class="column-2 width" id="personnel-number" name="entry.1979791766" onkeydown="return event.key != 'Enter';" required>
           <option value="N/A">N/A</option>
-          <option value="EM6007 (Wikstrom)">EM6007 (Wikstrom)</option>
-          <option value="EM2087 (Moutray)">EM2087 (Moutray)</option>
-          <option value="EM9136 (Fay)">EM9136 (Fay)</option>
           <option value="SO3288 (Beckner)">SO3288 (Beckner)</option>
-          <option value="EM3040 (Wilkins)">EM3040 (Wilkins)</option>
-          <option value="EM0106 (Morton)">EM0106 (Morton)</option>
+          <option value="EM9136 (Fay)">EM9136 (Fay)</option>
+          <option value="AR9301 (Hots)">AR9301 (Hots)</option>
+          <option value="SO3268 (Klett)">SO3268 (Klett)</option>
           <option value="SO3276 (McGowan)">SO3276 (McGowan)</option>
+          <option value="EM0106 (Morton)">EM0106 (Morton)</option>
+          <option value="EM2087 (Moutray)">EM2087 (Moutray)</option>
+          <option value="SO1437 (Quistorf)">SO1437 (Quistorf)</option>
+          <option value="EM5043 (Stollwerck)">EM5043 (Stollwerck)</option>
+          <option value="EM6007 (Wikstrom)">EM6007 (Wikstrom)</option>
+          <option value="EM3040 (Wilkins)">EM3040 (Wilkins)</option>
         </select>
       </div>
       <div class="row">
         <label class="column-1" for="email">Email (if you want a copy)</label>
         <input class="column-2" type="email" id="email" name="entry.632821268" onkeydown="return event.key != 'Enter';">
-      </div>
-      <div class="row">
-        <label class="column-1" for="date">Date <span style="color:red;">*</span></label>
-        <input class="column-2" type="date" id="date" name="entry.1097923168" onkeydown="return event.key != 'Enter';" required>
       </div>
       <div class="row">
         <label class="column-1" for="incident">Incident #</label>
@@ -135,6 +168,8 @@
         Select at least one of the below. <span style="color:red;">*</span>
       </div>
       <div class="row">
+        <input type="checkbox" id="pilot" name="entry.80614275" value="Pilot" onkeydown="return event.key != 'Enter';">
+        <label for="pilot">Pilot</label>
         <input type="checkbox" id="cc" name="entry.80614275" value="CC" onkeydown="return event.key != 'Enter';">
         <label for="cc">CC</label>
         <input type="checkbox" id="observer" name="entry.80614275" value="Observer" onkeydown="return event.key != 'Enter';">
@@ -162,10 +197,12 @@
            <input type="checkbox" id="maintenance" name="entry.649523368" value="Maintenance" onkeydown="return event.key != 'Enter';">
            <label for="maintenance">Maintenance</label>
         </div>
+        <div class="column-3 instructions">Maintenance flights will be designated by the PIC.  If you are unsure if a flight is a maintenance flight ask the PIC.</div>
        </div>
        <div class="row">
          <label class="column-1" for="datetime">Date/Time <span style="color:red;">*</span></label>
-         <input class="column-2" type="text" id="datetime" name="entry.1864317243" onkeydown="return event.key != 'Enter';" required>
+         <input class="column-2" type="datetime-local" id="datetime" name="entry.1864317243" onkeydown="return event.key != 'Enter';" required>
+         <div class="column-3 instructions">date event occurred, show time of event</div>
        </div>
        <div class="row">
          <label class="column-1" for="description">Description</label>
@@ -185,7 +222,7 @@
        </div>
       <div class="row">
         <div class="column-1" >Mission Brief? <span style="color:red;">*</span></div>
-        <div class="column-2">
+        <div class="column-2-radio">
           <input type="radio" id="mission-brief-yes" name="entry.1648470799" value="Yes" onkeydown="return event.key != 'Enter';">
           <label for="mission-brief-yes">Yes</label>
           <input type="radio" id="mission-brief-no" name="entry.1648470799" value="No" onkeydown="return event.key != 'Enter';">
@@ -206,6 +243,159 @@
         <textarea class="column-2" id="no-brief" name="entry.969831583" rows="4"></textarea>
       </div>
       <legend>SKILLS</legend>
+      <div class="row">
+        <div class="column-1">Helicopter Hoist OPS <span style="color:red;">*</span></div>
+        <div class="column-2-radio">
+          <input type="radio" id="helicopter-hoist-ops-yes" name="entry.2023081023" value="Yes" onkeydown="return event.key != 'Enter';">
+          <label for="helicopter-hoist-ops-yes">Yes</label>
+          <input type="radio" id="helicopter-hoist-ops-no" name="entry.2023081023" value="No" checked="checked" onkeydown="return event.key != 'Enter';">
+          <label for="helicopter-hoist-ops-no">No</label>
+        </div>
+        <div class=column-3 instructions>Ground rehearsals in SH10 <span class="bold">DO NOT</span> count as “Live Loads” or “Cargo raise/lower”</div>
+      </div>
+      <div class="row">
+        <label class="column-1-indented" for="helicopter-hoist-ops-lll">Live load lower #</label>
+        <input class="column-2" type="number" id="helicopter-hoist-ops-lll" name="entry.1224626350" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
+      </div>
+      <div class="row">
+        <label class="column-1-indented" for="helicopter-hoist-ops-llr">Live load raise #</label>
+        <input class="column-2" type="number" id="helicopter-hoist-ops-llr" name="entry.571050783" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
+      </div>
+      <div class="row">
+        <label class="column-1-indented" for="helicopter-hoist-ops-cl">Cargo lower #</label>
+        <input class="column-2" type="number" id="helicopter-hoist-ops-cl" name="entry.1647535661" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
+      </div>
+      <div class="row">
+        <label class="column-1-indented" for="helicopter-hoist-ops-cr">Cargo raise #</label>
+        <input class="column-2" type="number" id="helicopter-hoist-ops-cr" name="entry.1034154823" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
+      </div>
+      <div class="row">
+        <label class="column-1" for="ground-rehearsals">Ground rehearsals #</label>
+        <input class="column-2" type="number" id="ground-rehearsals" name="entry.711580596" value="0" min="0" max="10" onkeydown="return event.key != 'Enter';">
+      </div>
+      <div class="row">
+        <div class="column-1">Tower Hoist OPS <span style="color:red;">*</span></div>
+        <div class="column-2">
+          <input type="radio" id="tower-hoist-ops-yes" name="entry.2075553422" value="Yes" onkeydown="return event.key != 'Enter';">
+          <label for="tower-hoist-ops-yes">Yes</label>
+          <input type="radio" id="tower-hoist-ops-no" name="entry.2075553422" value="No" checked="checked" onkeydown="return event.key != 'Enter';">
+          <label for="tower-hoist-ops-no">No</label>
+        </div>
+      </div>
+      <div class="row">
+        <label class="column-1-indented" for="tower-hoist-ops-lll">Live load lower #</label>
+        <input class="column-2" type="number" id="tower-hoist-ops-lll" name="entry.1059681448"  value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
+      </div>
+      <div class="row">
+        <label class="column-1-indented" for="tower-hoist-ops-llr">Live load raise #</label>
+        <input class="column-2" type="number" id="tower-hoist-ops-llr" name="entry.360654942" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
+      </div>
+      <div class="row">
+        <label class="column-1-indented" for="tower-hoist-ops-cl">Cargo lower #</label>
+        <input class="column-2" type="number" id="tower-hoist-ops-cl" name="entry.1165620508" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
+      </div>
+      <div class="row">
+        <label class="column-1-indented" for="tower-hoist-ops-cr">Cargo raise #</label>
+        <input class="column-2" type="number" id="tower-hoist-ops-cr" name="entry.2139924757" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
+      </div>
+      <div class="row">
+        <div class="column-1">NVG OPS <span style="color:red;">*</span></div>
+        <div class="column-2">
+          <input type="radio" id="nvg-yes" name="entry.1969763402" value="Yes" onkeydown="return event.key != 'Enter';">
+          <label for="nvg-yes">Yes</label>
+          <input type="radio" id="nvg-no" name="entry.1969763402" value="No" checked="checked" onkeydown="return event.key != 'Enter';">
+          <label for="nvg-no">No</label>
+        </div>
+      </div>
+      <div class="row floating">
+        <label class="column-1-indented" for="nvg-time">Time</label>
+        <input class="column-2" type="text" id="nvg-time" name="entry.589110924" pattern="\d?(\.\d{1,2})?" value="0" onkeydown="return event.key != 'Enter';">
+      </div>
+      <div class="row">
+        <label class="column-1" for="emergency-procedures">Emergency procedures #</label>
+        <input class="column-2" type="number" id="emergency-procedures" name="entry.602171895" value="0" min="0" max="10" onkeydown="return event.key != 'Enter';">
+        <div class="column-3 instructions">Any emergency procedure that is practiced (not verbalized) during training or completed during a mission.</div>
+      </div>
+      <div class="row floating">
+        <label class="column-1-indented" for="emergency-procedures-type">Type:</label>
+        <textarea class="column-2" type="text" id="emergency-procedures-type" name="entry.461968972" rows="2" onkeydown="return event.key != 'Enter';"></textarea>
+        <div class="column-3 instructions">Examples: NVG malfunction in flight, hoist malfunction on the tower, hydraulics off or autorotation during training).</div>
+      </div>
+      <div class="row">
+        <div class="column-1">Litter tie down <span style="color:red;">*</span></div>
+        <div class="column-2">
+          <input type="radio" id="litter-tie-down-yes" name="entry.845047069" value="Yes" onkeydown="return event.key != 'Enter';">
+          <label for="litter-tie-down-yes">Yes</label>
+          <input type="radio" id="litter-tie-down-no" name="entry.845047069" value="No" checked="checked" onkeydown="return event.key != 'Enter';">
+          <label for="litter-tie-down-no">No</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column-1">Confined space landings <span style="color:red;">*</span></div>
+        <div class="column-2">
+          <input type="radio" id="confined-space-yes" name="entry.1924327461" value="Yes" onkeydown="return event.key != 'Enter';">
+          <label for="confined-space-yes">Yes</label>
+          <input type="radio" id="confined-space-no" name="entry.1924327461" value="No" checked="checked" onkeydown="return event.key != 'Enter';">
+          <label for="confined-space-no">No</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column-1">Pinnacle landings <span style="color:red;">*</span></div>
+        <div class="column-2">
+          <input type="radio" id="pinnacle-landings-yes" name="entry.375830416" value="Yes" onkeydown="return event.key != 'Enter';">
+          <label for="pinnacle-landings-yes">Yes</label>
+          <input type="radio" id="pinnacle-landings-no" name="entry.375830416" value="No" checked="checked" onkeydown="return event.key != 'Enter';">
+          <label for="pinnacle-landings-no">No</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column-1">Low hover OPS <span style="color:red;">*</span></div>
+        <div class="column-2">
+          <input type="radio" id="low-hover-yes" name="entry.820500610" value="Yes" onkeydown="return event.key != 'Enter';">
+          <label for="low-hover-yes">Yes</label>
+          <input type="radio" id="low-hover-no" name="entry.820500610" value="No" checked="checked" onkeydown="return event.key != 'Enter';">
+          <label for="low-hover-no">No</label>
+        </div>
+      </div>
+      <div class="row">
+        <label class="column-1-indented" for="low-hover-number">Number</label>
+        <input class="column-2" type="number" id="low-hover-number" name="entry.1696138054" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
+      </div>
+      <div class="row">
+        <div class="column-1">Slope landings <span style="color:red;">*</span></div>
+        <div class="column-2">
+          <input type="radio" id="slope-landings-yes" name="entry.840275502" value="Yes" onkeydown="return event.key != 'Enter';">
+          <label for="slope-landings-yes">Yes</label>
+          <input type="radio" id="slope-landings-no" name="entry.840275502" value="No" checked="checked" onkeydown="return event.key != 'Enter';">
+          <label for="slope-landings-no">No</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column-1">Snow OPS <span style="color:red;">*</span></div>
+        <div class="column-2">
+          <input type="radio" id="snow-yes" name="entry.1218379221" value="Yes" onkeydown="return event.key != 'Enter';">
+          <label for="snow-yes">Yes</label>
+          <input type="radio" id="snow-no" name="entry.1218379221" value="No" checked="checked" onkeydown="return event.key != 'Enter';">
+          <label for="snow-no">No</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column-1">Water Bucket Rigging <span style="color:red;">*</span></div>
+        <div class="column-2">
+          <input type="radio" id="water-bucket-rigging-yes" name="entry.458659209" value="Yes" onkeydown="return event.key != 'Enter';">
+          <label for="water-bucket-rigging-yes">Yes</label>
+          <input type="radio" id="water-bucket-rigging-no" name="entry.458659209" value="No" checked="checked" onkeydown="return event.key != 'Enter';">
+          <label for="water-bucket-rigging-no">No</label>
+        </div>
+      </div>
+      <div class="row">
+        <label class="column-1-indented" for="water-bucket-number">Number</label>
+        <input class="column-2" type="number" id="water-bucket-number" name="entry.2070101754" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
+      </div>
+      <div class="row">
+        <label class="column-1-indented" for="water-bucket-drops">Drops #</label>
+        <input class="column-2" type="number" id="water-bucket-drops" name="entry.777098415" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
+      </div>
       <div class="row">
         <div class="column-1">Short haul rigging <span style="color:red;">*</span></div>
         <div class="column-2">
@@ -253,153 +443,6 @@
       <div class="row">
         <label class="column-1-indented" for="id-cargo-lower-number">Number</label>
         <input class="column-2" type="number" id="id-cargo-lower-number" name="entry.408351342" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
-      </div>
-      <div class="row">
-        <div class="column-1">Water Bucket Rigging <span style="color:red;">*</span></div>
-        <div class="column-2">
-          <input type="radio" id="water-bucket-rigging-yes" name="entry.458659209" value="Yes" onkeydown="return event.key != 'Enter';">
-          <label for="water-bucket-rigging-yes">Yes</label>
-          <input type="radio" id="water-bucket-rigging-no" name="entry.458659209" value="No" checked="checked" onkeydown="return event.key != 'Enter';">
-          <label for="water-bucket-rigging-no">No</label>
-        </div>
-      </div>
-      <div class="row">
-        <label class="column-1-indented" for="water-bucket-number">Number</label>
-        <input class="column-2" type="number" id="water-bucket-number" name="entry.2070101754" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
-      </div>
-      <div class="row">
-        <label class="column-1-indented" for="water-bucket-drops">Drops #</label>
-        <input class="column-2" type="number" id="water-bucket-drops" name="entry.777098415" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
-      </div>
-      <div class="row">
-        <div class="column-1">Confined space landings <span style="color:red;">*</span></div>
-        <div class="column-2">
-          <input type="radio" id="confined-space-yes" name="entry.1924327461" value="Yes" onkeydown="return event.key != 'Enter';">
-          <label for="confined-space-yes">Yes</label>
-          <input type="radio" id="confined-space-no" name="entry.1924327461" value="No" checked="checked" onkeydown="return event.key != 'Enter';">
-          <label for="confined-space-no">No</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="column-1">Pinnacle landings <span style="color:red;">*</span></div>
-        <div class="column-2">
-          <input type="radio" id="pinnacle-landings-yes" name="entry.375830416" value="Yes" onkeydown="return event.key != 'Enter';">
-          <label for="pinnacle-landings-yes">Yes</label>
-          <input type="radio" id="pinnacle-landings-no" name="entry.375830416" value="No" checked="checked" onkeydown="return event.key != 'Enter';">
-          <label for="pinnacle-landings-no">No</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="column-1">Slope landings <span style="color:red;">*</span></div>
-        <div class="column-2">
-          <input type="radio" id="slope-landings-yes" name="entry.840275502" value="Yes" onkeydown="return event.key != 'Enter';">
-          <label for="slope-landings-yes">Yes</label>
-          <input type="radio" id="slope-landings-no" name="entry.840275502" value="No" checked="checked" onkeydown="return event.key != 'Enter';">
-          <label for="slope-landings-no">No</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="column-1">One skid landings <span style="color:red;">*</span></div>
-        <div class="column-2">
-          <input type="radio" id="one-skid-landings-yes" name="entry.1114446582" value="Yes" onkeydown="return event.key != 'Enter';">
-          <label for="one-skid-landings-yes">Yes</label>
-          <input type="radio" id="one-skid-landings-no" name="entry.1114446582" value="No" checked="checked" onkeydown="return event.key != 'Enter';">
-          <label for="one-skid-landings-no">No</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="column-1">Low hover OPS <span style="color:red;">*</span></div>
-        <div class="column-2">
-          <input type="radio" id="low-hover-yes" name="entry.820500610" value="Yes" onkeydown="return event.key != 'Enter';">
-          <label for="low-hover-yes">Yes</label>
-          <input type="radio" id="low-hover-no" name="entry.820500610" value="No" checked="checked" onkeydown="return event.key != 'Enter';">
-          <label for="low-hover-no">No</label>
-        </div>
-      </div>
-      <div class="row">
-        <label class="column-1-indented" for="low-hover-number">Number</label>
-        <input class="column-2" type="number" id="low-hover-number" name="entry.1696138054" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
-      </div>
-      <div class="row">
-        <div class="column-1">Snow OPS <span style="color:red;">*</span></div>
-        <div class="column-2">
-          <input type="radio" id="snow-yes" name="entry.1218379221" value="Yes" onkeydown="return event.key != 'Enter';">
-          <label for="snow-yes">Yes</label>
-          <input type="radio" id="snow-no" name="entry.1218379221" value="No" checked="checked" onkeydown="return event.key != 'Enter';">
-          <label for="snow-no">No</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="column-1">NVG OPS <span style="color:red;">*</span></div>
-        <div class="column-2">
-          <input type="radio" id="nvg-yes" name="entry.1969763402" value="Yes" onkeydown="return event.key != 'Enter';">
-          <label for="nvg-yes">Yes</label>
-          <input type="radio" id="nvg-no" name="entry.1969763402" value="No" checked="checked" onkeydown="return event.key != 'Enter';">
-          <label for="nvg-no">No</label>
-        </div>
-      </div>
-      <div class="row floating">
-        <label class="column-1-indented" for="nvg-time">Time</label>
-        <input class="column-2" type="text" id="nvg-time" name="entry.589110924" pattern="\d?(\.\d{1,2})?" value="0" onkeydown="return event.key != 'Enter';">
-      </div>
-      <div class="row">
-        <div class="column-1">Litter tie down <span style="color:red;">*</span></div>
-        <div class="column-2">
-          <input type="radio" id="litter-tie-down-yes" name="entry.845047069" value="Yes" onkeydown="return event.key != 'Enter';">
-          <label for="litter-tie-down-yes">Yes</label>
-          <input type="radio" id="litter-tie-down-no" name="entry.845047069" value="No" checked="checked" onkeydown="return event.key != 'Enter';">
-          <label for="litter-tie-down-no">No</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="column-1">Helicopter Hoist OPS <span style="color:red;">*</span></div>
-        <div class="column-2">
-          <input type="radio" id="helicopter-hoist-ops-yes" name="entry.2023081023" value="Yes" onkeydown="return event.key != 'Enter';">
-          <label for="helicopter-hoist-ops-yes">Yes</label>
-          <input type="radio" id="helicopter-hoist-ops-no" name="entry.2023081023" value="No" checked="checked" onkeydown="return event.key != 'Enter';">
-          <label for="helicopter-hoist-ops-no">No</label>
-        </div>
-      </div>
-      <div class="row">
-        <label class="column-1-indented" for="helicopter-hoist-ops-lll">Live load lower #</label>
-        <input class="column-2" type="number" id="helicopter-hoist-ops-lll" name="entry.1224626350" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
-      </div>
-      <div class="row">
-        <label class="column-1-indented" for="helicopter-hoist-ops-llr">Live load raise #</label>
-        <input class="column-2" type="number" id="helicopter-hoist-ops-llr" name="entry.571050783" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
-      </div>
-      <div class="row">
-        <label class="column-1-indented" for="helicopter-hoist-ops-cl">Cargo lower #</label>
-        <input class="column-2" type="number" id="helicopter-hoist-ops-cl" name="entry.1647535661" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
-      </div>
-      <div class="row">
-        <label class="column-1-indented" for="helicopter-hoist-ops-cr">Cargo raise #</label>
-        <input class="column-2" type="number" id="helicopter-hoist-ops-cr" name="entry.1034154823" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
-      </div>
-      <div class="row">
-        <div class="column-1">Tower Hoist OPS <span style="color:red;">*</span></div>
-        <div class="column-2">
-          <input type="radio" id="tower-hoist-ops-yes" name="entry.2075553422" value="Yes" onkeydown="return event.key != 'Enter';">
-          <label for="tower-hoist-ops-yes">Yes</label>
-          <input type="radio" id="tower-hoist-ops-no" name="entry.2075553422" value="No" checked="checked" onkeydown="return event.key != 'Enter';">
-          <label for="tower-hoist-ops-no">No</label>
-        </div>
-      </div>
-      <div class="row">
-        <label class="column-1-indented" for="tower-hoist-ops-lll">Live load lower #</label>
-        <input class="column-2" type="number" id="tower-hoist-ops-lll" name="entry.1059681448"  value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
-      </div>
-      <div class="row">
-        <label class="column-1-indented" for="tower-hoist-ops-llr">Live load raise #</label>
-        <input class="column-2" type="number" id="tower-hoist-ops-llr" name="entry.360654942" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
-      </div>
-      <div class="row">
-        <label class="column-1-indented" for="tower-hoist-ops-cl">Cargo lower #</label>
-        <input class="column-2" type="number" id="tower-hoist-ops-cl" name="entry.1165620508" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
-      </div>
-      <div class="row">
-        <label class="column-1-indented" for="tower-hoist-ops-cr">Cargo raise #</label>
-        <input class="column-2" type="number" id="tower-hoist-ops-cr" name="entry.2139924757" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
       </div>
       <div class="row">
         <label class="column-1" for="issues">Operational issues or problems.</label>
