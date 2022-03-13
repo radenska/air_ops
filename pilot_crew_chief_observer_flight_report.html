@@ -133,8 +133,6 @@
       <div class="instructions-block instructions">
         <div class="bold">INSTRUCTIONS/INFO</div>
         <div>• Other than the "Name" field, use last names only. Include first initial in case of common last names (e.g., J. Brown, R. Brown).</div>
-  	    <div>• Tower trainings count as “Live Loads” and “Cargo raise/lower”</div>
-        <div>• The number of tasks completed may not match up with other crew members, keep track of your own completed tasks.  Sometimes you need to estimate the number completed if you lose track. Pilots will be keeping track of total “hoist procedures” which does not include raising an empty hook.</div>
       </div>
       <div class="row">
         <label class="column-1" for="name">Name <span style="color:red;">*</span></label>
@@ -145,13 +143,18 @@
         <label class="column-1" for="personnel-number">Personnel number <span style="color:red;">*</span></label>
         <select class="column-2 width" id="personnel-number" name="entry.1979791766" onkeydown="return event.key != 'Enter';" required>
           <option value="N/A">N/A</option>
-          <option value="EM6007 (Wikstrom)">EM6007 (Wikstrom)</option>
-          <option value="EM2087 (Moutray)">EM2087 (Moutray)</option>
-          <option value="EM9136 (Fay)">EM9136 (Fay)</option>
           <option value="SO3288 (Beckner)">SO3288 (Beckner)</option>
-          <option value="EM3040 (Wilkins)">EM3040 (Wilkins)</option>
-          <option value="EM0106 (Morton)">EM0106 (Morton)</option>
+          <option value="SO1362 (Espeland)">SO1362 (Espeland)</option>
+          <option value="EM9136 (Fay)">EM9136 (Fay)</option>
+          <option value="AR9301 (Hots)">AR9301 (Hots)</option>
+          <option value="SO3268 (Klett)">SO3268 (Klett)</option>
+          <option value="EM0016 (Loverink)">EM0016 (Loverink)</option>
           <option value="SO3276 (McGowan)">SO3276 (McGowan)</option>
+          <option value="EM0106 (Morton)">EM0106 (Morton)</option>
+          <option value="EM2087 (Moutray)">EM2087 (Moutray)</option>
+          <option value="SO1437 (Quistorf)">SO1437 (Quistorf)</option>
+          <option value="EM5043 (Stollwerck)">EM5043 (Stollwerck)</option>
+          <option value="EM6007 (Wikstrom)">EM6007 (Wikstrom)</option>
         </select>
       </div>
       <div class="row">
@@ -166,6 +169,8 @@
         Select at least one of the below. <span style="color:red;">*</span>
       </div>
       <div class="row">
+        <input type="checkbox" id="pilot" name="entry.80614275" value="Pilot" onkeydown="return event.key != 'Enter';">
+        <label for="pilot">Pilot</label>
         <input type="checkbox" id="cc" name="entry.80614275" value="CC" onkeydown="return event.key != 'Enter';">
         <label for="cc">CC</label>
         <input type="checkbox" id="observer" name="entry.80614275" value="Observer" onkeydown="return event.key != 'Enter';">
@@ -267,7 +272,7 @@
       </div>
       <div class="row">
         <label class="column-1" for="ground-rehearsals">Ground rehearsals #</label>
-        <input class="column-2" type="number" id="ground-rehearsals" name="NEEDS REAL VALUE" value="0" min="0" max="10" onkeydown="return event.key != 'Enter';">
+        <input class="column-2" type="number" id="ground-rehearsals" name="entry.711580596" value="0" min="0" max="10" onkeydown="return event.key != 'Enter';">
       </div>
       <div class="row">
         <div class="column-1">Tower Hoist OPS <span style="color:red;">*</span></div>
@@ -309,12 +314,12 @@
       </div>
       <div class="row">
         <label class="column-1" for="emergency-procedures">Emergency procedures #</label>
-        <input class="column-2" type="number" id="emergency-procedures" name="NEEDS REAL VALUE" value="0" min="0" max="10" onkeydown="return event.key != 'Enter';">
+        <input class="column-2" type="number" id="emergency-procedures" name="entry.602171895" value="0" min="0" max="10" onkeydown="return event.key != 'Enter';">
         <div class="column-3 instructions">Any emergency procedure that is practiced (not verbalized) during training or completed during a mission.</div>
       </div>
       <div class="row floating">
         <label class="column-1-indented" for="emergency-procedures-type">Type:</label>
-        <textarea class="column-2" type="text" id="emergency-procedures-type" name="NEEDS REAL VALUE" rows="2" onkeydown="return event.key != 'Enter';"></textarea>
+        <textarea class="column-2" type="text" id="emergency-procedures-type" name="entry.461968972" rows="2" onkeydown="return event.key != 'Enter';"></textarea>
         <div class="column-3 instructions">Examples: NVG malfunction in flight, hoist malfunction on the tower, hydraulics off or autorotation during training).</div>
       </div>
       <div class="row">
@@ -385,6 +390,14 @@
         </div>
       </div>
       <div class="row">
+        <label class="column-1-indented" for="water-bucket-number">Number</label>
+        <input class="column-2" type="number" id="water-bucket-number" name="entry.2070101754" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
+      </div>
+      <div class="row">
+        <label class="column-1-indented" for="water-bucket-drops">Drops #</label>
+        <input class="column-2" type="number" id="water-bucket-drops" name="entry.777098415" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
+      </div>
+      <div class="row">
         <div class="column-1">Short haul rigging <span style="color:red;">*</span></div>
         <div class="column-2">
           <input type="radio" id="short-haul-yes" name="entry.2126293030" value="Yes" onkeydown="return event.key != 'Enter';">
@@ -431,14 +444,6 @@
       <div class="row">
         <label class="column-1-indented" for="id-cargo-lower-number">Number</label>
         <input class="column-2" type="number" id="id-cargo-lower-number" name="entry.408351342" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
-      </div>
-      <div class="row">
-        <label class="column-1-indented" for="water-bucket-number">Number</label>
-        <input class="column-2" type="number" id="water-bucket-number" name="entry.2070101754" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
-      </div>
-      <div class="row">
-        <label class="column-1-indented" for="water-bucket-drops">Drops #</label>
-        <input class="column-2" type="number" id="water-bucket-drops" name="entry.777098415" value="0" min="0" max="25" onkeydown="return event.key != 'Enter';">
       </div>
       <div class="row">
         <label class="column-1" for="issues">Operational issues or problems.</label>
